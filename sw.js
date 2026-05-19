@@ -1,9 +1,10 @@
-const CACHE = 'tracker-v1'
+const CACHE = 'tracker-v2'
+const BASE = '/tracker-financiero-2026'
 
 const PRECACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json',
+  BASE + '/',
+  BASE + '/index.html',
+  BASE + '/manifest.json',
 ]
 
 self.addEventListener('install', e => {
@@ -21,7 +22,6 @@ self.addEventListener('activate', e => {
 })
 
 self.addEventListener('fetch', e => {
-  // Only cache same-origin GET requests
   if (e.request.method !== 'GET' || !e.request.url.startsWith(self.location.origin)) return
 
   e.respondWith(
